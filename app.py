@@ -33,19 +33,14 @@ st.markdown("download test dataset and evaluate selected machine learning model.
 # -------------------------------
 st.subheader("📥 Download Sample Test Data")
 
-# Load original dataset
-try:
-    sample_df = pd.read_csv("adult.csv").sample(200, random_state=42)
-    csv = sample_df.to_csv(index=False).encode("utf-8")
-
+with open("sample_test_data.csv", "rb") as file:
     st.download_button(
         label="Download Sample Test CSV",
-        data=csv,
+        data=file,
         file_name="sample_test_data.csv",
         mime="text/csv"
     )
-except:
-    st.info("Sample dataset not found. Please upload test CSV manually.")
+    
 # -------------------------------
 # File Upload
 # -------------------------------
